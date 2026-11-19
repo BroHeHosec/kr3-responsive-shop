@@ -34,6 +34,7 @@
 Группа: ЭФБО-11-25
 
 Ссылка на опубликованный проект: https://BroHeHosec.github.io/kr3-responsive-shop/
+Ссылка на сайт проекта: https://brohehosec.github.io/kr3-responsive-shop/
 
 ## Текущий статус
 
