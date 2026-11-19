@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eef5ff"/>
+      <stop offset="100%" stop-color="#d4e6fc"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Фон -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  
+  <!-- Декоративная сетка -->
+  <path d="M 100 100 L 1100 100 M 100 200 L 1100 200 M 100 300 L 1100 300 M 100 400 L 1100 400 M 100 500 L 1100 500" stroke="#b3d4fc" stroke-width="2" opacity="0.5"/>
+  <path d="M 200 50 L 200 580 M 400 50 L 400 580 M 600 50 L 600 580 M 800 50 L 800 580 M 1000 50 L 1000 580" stroke="#b3d4fc" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Заголовок -->
+  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" fill="#0057b8" font-weight="bold">ShopProject</text>
+  <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#003f86">Учебный интернет-магазин</text>
+  
+  <!-- Иконки товаров -->
+  <circle cx="400" cy="480" r="40" fill="#0057b8" opacity="0.8"/>
+  <circle cx="600" cy="480" r="40" fill="#0057b8" opacity="0.6"/>
+  <circle cx="800" cy="480" r="40" fill="#0057b8" opacity="0.4"/>
+</svg>

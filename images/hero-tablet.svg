@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="432" viewBox="0 0 768 432">
+  <defs>
+    <linearGradient id="bgTablet" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#003f86"/>
+      <stop offset="100%" stop-color="#0057b8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Фон -->
+  <rect width="768" height="432" fill="url(#bgTablet)"/>
+  
+  <!-- Декоративные элементы -->
+  <rect x="600" y="-50" width="200" height="200" fill="#ffffff" opacity="0.05" transform="rotate(45 600 -50)"/>
+  <rect x="-50" y="300" width="200" height="200" fill="#ffffff" opacity="0.05" transform="rotate(45 -50 300)"/>
+  
+  <!-- Иконка ноутбука/товара -->
+  <g transform="translate(384, 216)" fill="none" stroke="#ffffff" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" opacity="0.9">
+    <rect x="-60" y="-40" width="120" height="80" rx="8" />
+    <path d="M-20,40 L20,40" />
+    <path d="M-40,40 L40,40" />
+    <circle cx="0" cy="0" r="15" fill="#ffffff" />
+  </g>
+  
+  <!-- Текст -->
+  <text x="50%" y="85%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#ffffff" font-weight="bold">Планшетная версия</text>
+</svg>

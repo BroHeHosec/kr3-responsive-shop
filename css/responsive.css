@@ -1,0 +1,420 @@
+/* ============================================================
+   Адаптивные стили для контрольной работы №3.
+   Подход: Mobile First.
+   Базовые стили рассчитаны на мобильный экран.
+   Расширения добавляются через min-width медиазапросы.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Базовый каркас
+   ------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* ------------------------------------------------------------
+   2. Контейнеры и секции
+   ------------------------------------------------------------ */
+main {
+  padding-block: var(--space-md);
+  padding-inline: var(--space-md);
+}
+
+.section {
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+  padding-block: clamp(24px, 5vw, 64px);
+  scroll-margin-top: 100px;
+}
+
+/* ------------------------------------------------------------
+   3. Шапка и навигация (Mobile First)
+   ------------------------------------------------------------ */
+.site-header {
+  position: static;
+  padding: var(--space-md);
+  background-color: var(--color-surface); /* Добавил фон для шапки, чтобы она выделялась */
+  border-bottom: 1px solid var(--color-border); /* Разделитель шапки и контента */
+}
+
+.site-header__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md); /* Увеличил отступ между логотипом и меню */
+  width: 100%;
+}
+
+.site-header__logo {
+  font-size: 20px;
+  padding-left: 4px;
+}
+
+.site-nav {
+  width: 100%;
+}
+
+/* Сбрасываем стандартные стили списка */
+.site-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm, 8px);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+
+/* Делаем каждый пункт меню отдельной красивой кнопкой-обводкой */
+.site-nav__item {
+  width: 100%;
+}
+
+.site-nav__link {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border); /* Обводка */
+  border-radius: var(--radius-sm); /* Скругление углов */
+  background-color: var(--color-white); /* Белый фон */
+  color: var(--color-text); /* Цвет текста */
+  text-align: center; /* Выравнивание по центру */
+  transition: all 0.2s ease; /* Плавный эффект при наведении */
+}
+
+/* Эффект при наведении на пункт меню */
+.site-nav__link:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: var(--color-surface-accent);
+}
+
+/* Активный пункт меню (Главная, когда мы на ней) */
+.site-nav__link--active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav__link--active:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+/* Планшет и десктоп: возвращаем меню в строку */
+@media (min-width: 768px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .site-header__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+
+  .site-nav {
+    width: auto;
+  }
+
+  /* Список в строку */
+  .site-nav__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px; /* Маленький отступ между кнопками */
+  }
+
+  .site-nav__item {
+    width: auto; /* Убираем растягивание на 100% */
+  }
+
+  /* Убираем обводку и делаем классические ссылки для ПК */
+  .site-nav__link {
+    width: auto;
+    padding: var(--space-sm) var(--space-md);
+    border: none;
+    background-color: transparent;
+    text-align: left;
+  }
+
+  .site-nav__link:hover {
+    background-color: var(--color-surface-accent);
+  }
+
+  .site-nav__link--active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+/* ------------------------------------------------------------
+   4. Hero-блок
+   ------------------------------------------------------------ */
+.hero {
+  display: grid;
+  gap: var(--space-lg, 24px);
+  align-items: center;
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+  margin-bottom: var(--space-xl);
+  padding: var(--space-lg);
+}
+
+.hero__content {
+  display: grid;
+  gap: var(--space-md, 16px);
+}
+
+.hero__title {
+  margin-top: 0;
+  font-size: clamp(28px, 7vw, 56px);
+  line-height: 1.1;
+}
+
+.hero__description {
+  max-width: 60ch;
+}
+
+.hero__image {
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+/* Двухколоночный hero с 900px */
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
+  }
+}
+
+/* ------------------------------------------------------------
+   5. Сетка карточек товаров (Mobile First)
+   ------------------------------------------------------------ */
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md, 16px);
+}
+
+.product-card {
+  min-width: 0;
+}
+
+.product-card__title,
+.product-card__description {
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 640px) {
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ------------------------------------------------------------
+   6. Каталог: на мобильном фильтры над товарами
+   ------------------------------------------------------------ */
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "filters"
+    "products";
+  gap: var(--space-lg);
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+  margin-bottom: var(--space-xl);
+  padding: 0;
+}
+
+.catalog-filters {
+  grid-area: filters;
+  min-width: 0;
+}
+
+.catalog-products {
+  grid-area: products;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .catalog-layout {
+    grid-template-columns: 260px minmax(0, 1fr);
+    grid-template-areas: "filters products";
+    align-items: start;
+  }
+}
+
+/* ------------------------------------------------------------
+   7. Изображения: гарантия адаптивности
+   ------------------------------------------------------------ */
+.product-card__image,
+.product-detail__image,
+.hero__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+  margin-bottom: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .product-detail {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+/* ------------------------------------------------------------
+   8. Адаптивная форма заявки
+   ------------------------------------------------------------ */
+.order-form {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.order-form__field {
+  display: grid;
+  gap: var(--space-xs);
+  margin-bottom: 0;
+}
+
+.order-form__input,
+.order-form__textarea,
+.order-form__select {
+  width: 100%;
+  min-height: 44px;
+}
+
+.order-form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.order-form__actions .button {
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .order-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .order-form__field--wide,
+  .order-form__field--checkbox,
+  .order-form__actions {
+    grid-column: 1 / -1;
+  }
+
+  .order-form__actions {
+    flex-direction: row;
+  }
+
+  .order-form__actions .button {
+    width: auto;
+  }
+}
+
+/* Модальное окно: не выходить за экран */
+.order-dialog {
+  width: min(100% - 32px, 640px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  border: none;
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-lg);
+}
+
+/* ------------------------------------------------------------
+   9. Адаптивная таблица характеристик
+   ------------------------------------------------------------ */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+}
+
+/* На узких экранах таблица прокручивается горизонтально */
+@media (max-width: 767px) {
+  .table-wrapper {
+    border: 1px solid var(--color-border, #ddd);
+    border-radius: var(--radius-sm, 6px);
+  }
+}
+
+/* ------------------------------------------------------------
+   10. Мелкие адаптивные правки
+   ------------------------------------------------------------ */
+@media (min-width: 768px) {
+  main {
+    padding-block: var(--space-lg);
+    padding-inline: var(--space-lg);
+  }
+
+  .breadcrumbs {
+    width: min(100% - 48px, 1200px);
+    margin-inline: auto;
+  }
+}
+
+/* Плавная прокрутка с учётом prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
